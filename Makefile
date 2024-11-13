@@ -42,10 +42,14 @@ build-linux-amd64:
 install:
 	@go mod download
 
-.PHONY: install build
-build:
+.PHONY: build
+build: install
 	@${MAKE} build-darwin-arm64
 	@${MAKE} build-darwin-amd64
 	@${MAKE} build-linux-arm64
 	@${MAKE} build-linux-amd64
 	@cp ${BIN_FOLDER}/${APP_NAME}_${OS}_${OS_ARCH} ${HOME}/go/bin/${APP_NAME}
+
+.PHONY: run
+run: install
+	@go run *.go

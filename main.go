@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+var (
+	AppName    string
+	AppVersion string
+)
 
 func main() {
-	fmt.Println("kube-term-diff")
+	tui := TermUI{}
+
+	if err := tui.Run(); err != nil {
+		panic(err)
+	}
 }
